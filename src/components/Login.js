@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user, logIn } = useUserAuth();
+  console.log(user);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await logIn(email, password);
+  };
 
   return (
     <div>
